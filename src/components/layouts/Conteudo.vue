@@ -1,13 +1,19 @@
 <template>
-    <div>
-      <h1>{{titulo}}</h1>
-      <p>Conteudo - Propriedade $style: {{ $style }}</p>
-      <!-- <div :class="$style.teste">Class Teste 1</div>
-      <div :id="$style['teste-2']">ID Teste 2</div> -->
-      <button @click="alterarTeste()">Alterar Teste</button>
-      <home />
-      <publicar-vaga />
-    </div>
+  <div>
+    <h1>{{titulo}}</h1>
+    <button @click="atualizarComponente()">Atualizar</button>
+    <button @click="conteudo = 'home'">Home</button>
+    <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
+    <!-- <p>Conteudo - Propriedade $style: {{ $style }}</p> -->
+    <!-- <div :class="$style.teste">Class Teste 1</div>
+    <div :id="$style['teste-2']">ID Teste 2</div> -->
+    <!-- <button @click="alterarTeste()">Alterar Teste</button> -->
+    <!-- <home /> -->
+    <!-- <publicar-vaga /> -->
+     <keep-alive>
+      <component :is="conteudo" />
+     </keep-alive>
+  </div>
 </template>
   
 <script>
@@ -22,37 +28,38 @@ export default {
   },
   data: () => ({
     teste: 'Teste',
-    titulo: 'Conteudo'
+    titulo: 'Conteudo',
+    conteudo: 'home'
   }),
   methods: {
-    alterarTeste() {
+    atualizarComponente() {
       this.titulo += '*';
     }
   },
-  beforeCreate() {
-    console.log('beforeCreate - Conteudo', this.teste);
-  },
-  created() {
-    console.log('created - Conteudo', this.teste);
-  },
-  beforeMount() {
-    console.log('beforeMount - Conteudo', this.teste);
-  },
-  mounted() {
-    console.log('mounted - Conteudo', this.teste);
-  },
-  beforeUpdate() {
-    console.log('beforeUpdate - Conteudo', this.teste);
-  },
-  updated() {
-    console.log('updated - Conteudo');
-  },
-  beforeDestroy() {
-    console.log('beforeDestroy - Conteudo');
-  },
-  destroyed() {
-    console.log('destroyed - Conteudo');
-  }
+  // beforeCreate() {
+  //   console.log('beforeCreate - Conteudo', this.teste);
+  // },
+  // created() {
+  //   console.log('created - Conteudo', this.teste);
+  // },
+  // beforeMount() {
+  //   console.log('beforeMount - Conteudo', this.teste);
+  // },
+  // mounted() {
+  //   console.log('mounted - Conteudo', this.teste);
+  // },
+  // beforeUpdate() {
+  //   console.log('beforeUpdate - Conteudo', this.teste);
+  // },
+  // updated() {
+  //   console.log('updated - Conteudo');
+  // },
+  // beforeDestroy() {
+  //   console.log('beforeDestroy - Conteudo');
+  // },
+  // destroyed() {
+  //   console.log('destroyed - Conteudo');
+  // }
 
 }
 
